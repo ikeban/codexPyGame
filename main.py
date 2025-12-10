@@ -58,62 +58,63 @@ def main():
 
     # GAME LOOP
     while not exitGame:
-       """
-       set the back ground color to black
-       needs to be called everytime the game updates
-       """
-       screen.fill(COLOR_BLACK)
+        """
+        set the back ground color to black
+        needs to be called everytime the game updates
+        """
+        screen.fill(COLOR_BLACK)
 
-       # make the ball move after 3 seconds
-       if not started:
-          # load the Consolas font
-          font = pygame.font.SysFont('Consolas', 30)
+        # make the ball move after 3 seconds
+        if not started:
+            # load the Consolas font
+            font = pygame.font.SysFont('Consolas', 30)
 
-          # draw some text to the center of teh screen
-          text = font.render('Press Space to Sart', True, COLOR_WHITE)
-          text_rect = text.get_rect()
-          text_rect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
-          screen.blit(text, text_rect)
+            # draw some text to the center of teh screen
+            text = font.render('Press Space to Sart', True, COLOR_WHITE)
+            text_rect = text.get_rect()
+            text_rect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
+            screen.blit(text, text_rect)
 
-          # update the display
-          # pygame.display.flip()
+            # update the display
+            pygame.display.flip()
 
-          clock.tick(60)
-          for event in pygame.event.get():
-              if event.type == pygame.QUIT:
-                    pygame.quit()
+            clock.tick(60)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
                     exitGame = True
-              if event.type == pygame.KEYDOWN:
-                 if event.key == pygame.K_SPACE:
-                    started = True
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:
+                        started = True
+            continue
 
 
-       """
-       get the time elapse between now and the last frame
-       60 is an arbitrary number but the game runs smooth at 60 FPS
-       """
-       selta_time = clock.tick(60)
+        """
+        get the time elapse between now and the last frame
+        60 is an arbitrary number but the game runs smooth at 60 FPS
+        """
+        selta_time = clock.tick(60)
 
-       # checking for events
-       for event in pygame.event.get():
+        # checking for events
+        for event in pygame.event.get():
           
-          # if the user exits the windows
-          if event.type == pygame.QUIT:
+            # if the user exits the windows
+            if event.type == pygame.QUIT:
              
-             # exit the function, to finish the game
-             exitGame = True
+                # exit the function, to finish the game
+                exitGame = True
           
-       # draw player 1 and player 2's paddle rects with the white color
-       pygame.draw.rect(screen, COLOR_WHITE, paddle_1_rect)
-       pygame.draw.rect(screen, COLOR_WHITE, paddle_2_rect)
+        # draw player 1 and player 2's paddle rects with the white color
+        pygame.draw.rect(screen, COLOR_WHITE, paddle_1_rect)
+        pygame.draw.rect(screen, COLOR_WHITE, paddle_2_rect)
 
-       # draw the ball with the white color
-       pygame.draw.rect(screen, COLOR_WHITE, ball_rect)
+        # draw the ball with the white color
+        pygame.draw.rect(screen, COLOR_WHITE, ball_rect)
 
-       # update the display (this is necessary for Pygame)
-       pygame.display.update()
+        # update the display (this is necessary for Pygame)
+        pygame.display.update()
 
     print("This is end of game")
+    pygame.quit()
 
 
 if __name__ == '__main__':
