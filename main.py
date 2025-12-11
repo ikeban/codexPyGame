@@ -45,6 +45,8 @@ def main():
 
     # this is the rectangle that represents the ball
     ball_rect = pygame.Rect(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 25, 25)
+    ball_image = pygame.image.load('ball2.png').convert()
+    ball_scalled = pygame.transform.scale(ball_image, (25, 25))
 
     # determine the x and y speed of the ball (0.1 is just to scale the speed down)
     ball_accel_x = random.randint(2, 4) * 0.1
@@ -181,6 +183,7 @@ def main():
 
         # draw the ball with the white color
         pygame.draw.rect(screen, COLOR_WHITE, ball_rect)
+        screen.blit(ball_scalled, ball_rect)
 
         # update the display (this is necessary for Pygame)
         pygame.display.update()
