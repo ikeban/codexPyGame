@@ -45,7 +45,7 @@ def main():
 
     # this is the rectangle that represents the ball
     ball_rect = pygame.Rect(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 25, 25)
-    ball_image = pygame.image.load('ball2.png').convert()
+    ball_image = pygame.image.load('ball2.png').convert_alpha()
     ball_scalled = pygame.transform.scale(ball_image, (25, 25))
 
     # determine the x and y speed of the ball (0.1 is just to scale the speed down)
@@ -64,7 +64,7 @@ def main():
         set the back ground color to black
         needs to be called everytime the game updates
         """
-        screen.fill(COLOR_BLACK)
+        screen.fill(COLOR_WHITE)
 
         # make the ball move after 3 seconds
         if not started:
@@ -72,7 +72,7 @@ def main():
             font = pygame.font.SysFont('Consolas', 30)
 
             # draw some text to the center of teh screen
-            text = font.render('Press Space to Start', True, COLOR_WHITE)
+            text = font.render('Press Space to Start', True, COLOR_BLACK)
             text_rect = text.get_rect()
             text_rect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
             screen.blit(text, text_rect)
@@ -178,11 +178,11 @@ def main():
 
 
         # draw player 1 and player 2's paddle rects with the white color
-        pygame.draw.rect(screen, COLOR_WHITE, paddle_1_rect)
-        pygame.draw.rect(screen, COLOR_WHITE, paddle_2_rect)
+        pygame.draw.rect(screen, COLOR_BLACK, paddle_1_rect)
+        pygame.draw.rect(screen, COLOR_BLACK, paddle_2_rect)
 
         # draw the ball with the white color
-        pygame.draw.rect(screen, COLOR_WHITE, ball_rect)
+        #pygame.draw.rect(screen, COLOR_BLACK, ball_rect)
         screen.blit(ball_scalled, ball_rect)
 
         # update the display (this is necessary for Pygame)
